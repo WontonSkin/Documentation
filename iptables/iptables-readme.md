@@ -4,20 +4,20 @@ https://www.cnblogs.com/colos/category/1489517.html
 
 
 
-【未学习】iptables详解（14）：iptables小结之常用套路
-【未学习】iptables详解（13）：iptables动作总结之二
-【未学习】iptables详解（12）：iptables动作总结之一
-【未学习】iptables详解（11）：iptables之网络防火墙
-【未学习】iptables详解（10）：iptables自定义链
-【未学习】iptables详解（9）：iptables的黑白名单机制
-【未学习】iptables详解（8）：iptables扩展模块之state扩展
-【未学习】iptables详解（7）：iptables扩展之udp扩展与icmp扩展
-【未学习】iptables详解（6）：iptables扩展匹配条件之’–tcp-flags’
-【未学习】iptables详解（5）：iptables匹配条件总结之二（常用扩展模块）
-【未学习】iptables详解（4）：iptables匹配条件总结之一
-【已学习】iptables详解（3）：iptables规则管理
-【已学习】iptables详解（2）：iptables实际操作之规则查询
-【已学习】iptables详解（1）：iptables概念
+- 【未学习】iptables详解（14）：iptables小结之常用套路
+- 【未学习】iptables详解（13）：iptables动作总结之二
+- 【未学习】iptables详解（12）：iptables动作总结之一
+- 【未学习】iptables详解（11）：iptables之网络防火墙
+- 【未学习】iptables详解（10）：iptables自定义链
+- 【未学习】iptables详解（9）：iptables的黑白名单机制
+- 【未学习】iptables详解（8）：iptables扩展模块之state扩展
+- 【未学习】iptables详解（7）：iptables扩展之udp扩展与icmp扩展
+- 【未学习】iptables详解（6）：iptables扩展匹配条件之’–tcp-flags’
+- 【未学习】iptables详解（5）：iptables匹配条件总结之二（常用扩展模块）
+- 【未学习】iptables详解（4）：iptables匹配条件总结之一
+- 【已学习】iptables详解（3）：iptables规则管理
+- 【已学习】iptables详解（2）：iptables实际操作之规则查询
+- 【已学习】iptables详解（1）：iptables概念
 
 
 
@@ -27,6 +27,32 @@ https://www.cnblogs.com/colos/category/1489517.html
 
 <img src="pic/971787-20191209114455162-2118810674.png" alt="img"  />
 
+1. 查看 PREROUTING 链
+
+   iptables -t raw -L PREROUTING && iptables -t mangle -L PREROUTING && iptables -t nat -L PREROUTING
+
+2. 查看 INPUT 链
+
+   iptables -t mangle -L INPUT && iptables -t nat -L INPUT &&  iptables -t filter -L INPUT
+
+   iptables -t filter -L INPUT -nv --line-num
+
+3. 查看  OUTPUT 链
+
+   iptables -t raw -L OUTPUT && iptables -t mangle -L OUTPUT && iptables -t nat -L OUTPUT  &&  iptables -t filter -L OUTPUT  
+
+   iptables -t nat -L OUTPUT  -nvx
+
+4. 查看 POSTROUTING 链
+
+   iptables -t mangle -L POSTROUTING && iptables -t nat -L POSTROUTING 
+
+5. 查看 FORWARD 链
+
+   iptables -t mangle -L FORWARD && iptables -t filter -L FORWARD 
+
+   
+
 --------------------------------------------------
 
 #### 表名：raw表、mangle表、nat表、filter表
@@ -34,6 +60,14 @@ https://www.cnblogs.com/colos/category/1489517.html
 #### 链名：PREROUTING链、INPUT链、OUTPUT链、POSTROUTING链、FORWARD链
 
 ![img](pic/971787-20191209131937357-1063125857.png)
+
+filter表就是我们最常使用的过滤表；
+
+nat表主要用于数据包转发，比如局域网的电脑如果想连接互联网，那么就可以使用nat给转发一下；
+
+mangle表的规则可以对数据包进行修改，比如修改ttl值等；
+
+raw表主要是为了提高效率使用的，raw本身的含义是指“原生的”、“未经过加工的”，符合raw表所对应规则的数据包将会跳过一些检查，这样就可以提高效率，当然，raw表的优先级也是最高的。
 
 #### 说明：
 
