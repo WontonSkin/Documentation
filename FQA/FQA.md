@@ -1,3 +1,9 @@
+
+
+
+
+
+
 ##### 如何查看glibc版本
 
 ```
@@ -19,6 +25,23 @@ nm -C libPocoNetd.so | grep "RawSocket::RawSocket"
 ![image-20201223224935289](pic/image-20201223224935289.png)
 
 -----------------------
+
+##### systemctl 使用总结
+
+```
+systemctl enable mysqld    #配置开机启动
+systemctl disable mysqld   #取消开机启动
+
+systemctl start mysqld     #启动mysql服务
+systemctl stop  mysqld     #停止mysql服务
+
+systemctl status mysqld            #查看mysql服务状态
+systemctl status mysqld.service    #查看mysql服务状态
+```
+
+-------------------------------------------
+
+
 
 
 
