@@ -1,4 +1,4 @@
-#### centos7 安装 mysql 过程 
+#### centos7 安装 mysql-5.7 过程 
 
 ```
 0、清理历史环境
