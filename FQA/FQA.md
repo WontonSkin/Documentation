@@ -41,13 +41,34 @@ systemctl status mysqld.service    #查看mysql服务状态
 
 -------------------------------------------
 
+##### SeLinux 操作说明
 
+```
+setenforce 0       #临时关闭SeLinux
+sestatus           #查看SeLinux状态
+vi /etc/selinux/config，将SELINU置为disabled    #永久关闭SeLinux，需要重启机器 
+```
 
+-----------------------------
 
+##### linux 防火墙操作说明
 
+```
+systemctl stop firewalld.service       #停止防火墙服务，临时
+systemctl disable firewalld.service    #防火墙开机不启用
+```
 
+------------------------------
 
+##### 添加smb服务到防火墙
 
+```
+firewall-cmd --add-service samba --permanent  #永久添加samba服务到防火墙策略中
+firewall-cmd --reload                         #重启防火墙
+firewall-cmd --list-all|grep samba            #查看samba服务是否添加到防火墙中
+```
+
+---------------------
 
 
 
