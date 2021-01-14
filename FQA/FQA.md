@@ -101,12 +101,18 @@ rsync -auzPv --delete --exclude "poco/.git/*" -e "ssh -p 51212 -i /drives/d/rsa_
 #-e 指定使用 SSH 协议传输数据。
 #-p 51212 指定SSH端口
 #-i 指定秘钥
-
 ```
 
 参考链接：  https://www.ruanyifeng.com/blog/2020/08/rsync.html
 
+-------------------------
 
+##### 显示某个进程的线程
 
+```
+top -p 7874   查看某个进程
+H 查看线程
+```
 
+![image-20210114191200612](pic/image-20210114191200612.png)
 
