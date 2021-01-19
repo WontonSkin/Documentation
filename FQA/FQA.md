@@ -116,3 +116,18 @@ H 查看线程
 
 ![image-20210114191200612](pic/image-20210114191200612.png)
 
+-------------------------
+##### 通过locate查找某个文件
+```
+[root@localhost build]# locate libcrypto.so
+/usr/lib64/.libcrypto.so.0.9.8e.hmac
+/usr/lib64/.libcrypto.so.1.0.2k.hmac
+/usr/lib64/.libcrypto.so.10.hmac
+/usr/lib64/.libcrypto.so.6.hmac
+/usr/lib64/libcrypto.so
+/usr/lib64/libcrypto.so.0.9.8e
+/usr/lib64/libcrypto.so.1.0.2k
+/usr/lib64/libcrypto.so.10
+/usr/lib64/libcrypto.so.6
+```
+
