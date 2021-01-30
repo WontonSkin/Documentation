@@ -6,7 +6,7 @@
 
 ##### 如何查看glibc版本
 
-```
+```shell
 方式一:  ls -l /lib/libc.so.*
 方式二:  ldd --version
 方式三:  /lib/libc.so.6
@@ -18,7 +18,7 @@
 
 ##### 如何查看函数符号表
 
-```
+```shell
 nm -C libPocoNetd.so | grep "RawSocket::RawSocket"
 ```
 
@@ -28,7 +28,7 @@ nm -C libPocoNetd.so | grep "RawSocket::RawSocket"
 
 ##### systemctl 使用总结
 
-```
+```shell
 systemctl enable mysqld    #配置开机启动
 systemctl disable mysqld   #取消开机启动
 
@@ -43,7 +43,7 @@ systemctl status mysqld.service    #查看mysql服务状态
 
 ##### SeLinux 操作说明
 
-```
+```shell
 setenforce 0       #临时关闭SeLinux
 sestatus           #查看SeLinux状态
 vi /etc/selinux/config，将SELINU置为disabled    #永久关闭SeLinux，需要重启机器 
@@ -53,7 +53,7 @@ vi /etc/selinux/config，将SELINU置为disabled    #永久关闭SeLinux，需�
 
 ##### linux 防火墙操作说明
 
-```
+```shell
 systemctl stop firewalld.service       #停止防火墙服务，临时
 systemctl disable firewalld.service    #防火墙开机不启用
 ```
@@ -62,7 +62,7 @@ systemctl disable firewalld.service    #防火墙开机不启用
 
 ##### 添加smb服务到防火墙
 
-```
+```shell
 firewall-cmd --add-service samba --permanent  #永久添加samba服务到防火墙策略中
 firewall-cmd --reload                         #重启防火墙
 firewall-cmd --list-all|grep samba            #查看samba服务是否添加到防火墙中
@@ -72,7 +72,7 @@ firewall-cmd --list-all|grep samba            #查看samba服务是否添加到�
 
 ##### 查看目录文件大小
 
-```
+```shell
 du -h -d 1
 ```
 
@@ -80,13 +80,13 @@ du -h -d 1
 
 ##### rsync使用说明
 
-```
+```shell
 Local to Local:  rsync [OPTION]... SRC [SRC]... DEST
 Local to Remote: rsync [OPTION]... SRC [SRC]... [USER@]HOST:DEST
 Remote to Local: rsync [OPTION]... [USER@]HOST:SRC [DEST]
 ```
 
-```
+```shell
 rsync -auzPv --delete --exclude "poco/.git/*" -e "ssh -p 51212 -i /drives/d/rsa_key" /drives/d/code/poco root@xx.xx.xx.xx:/appdata/code
 
 #-a  --archive表示存档模式，保存所有的元数据，比如修改时间（modification time）、权限、所有者等，并且软链接也会同步过去。
@@ -109,7 +109,7 @@ rsync -auzPv --delete --exclude "poco/.git/*" -e "ssh -p 51212 -i /drives/d/rsa_
 
 ##### 显示某个进程的线程
 
-```
+```shell
 top -p 7874   查看某个进程
 H 查看线程
 ```
@@ -118,7 +118,7 @@ H 查看线程
 
 -------------------------
 ##### 通过locate查找某个文件
-```
+```shell
 [root@localhost build]# locate libcrypto.so
 /usr/lib64/.libcrypto.so.0.9.8e.hmac
 /usr/lib64/.libcrypto.so.1.0.2k.hmac
@@ -129,5 +129,13 @@ H 查看线程
 /usr/lib64/libcrypto.so.1.0.2k
 /usr/lib64/libcrypto.so.10
 /usr/lib64/libcrypto.so.6
+```
+
+##### 查看linux系统版本
+
+```shell
+uname -a
+cat /proc/version
+cat /etc/redhat-release  ## centos系统还可以通过此命令查看
 ```
 
