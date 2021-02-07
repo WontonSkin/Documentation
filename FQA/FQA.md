@@ -74,6 +74,8 @@ firewall-cmd --list-all|grep samba            #查看samba服务是否添加到�
 
 ```shell
 du -h -d 1
+du -sh *
+du -sh .[!.]*
 ```
 
 -----------------
